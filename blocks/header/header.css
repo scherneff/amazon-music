@@ -1381,9 +1381,10 @@ header nav .nav-sections .default-content-wrapper > ul > li > p > a:hover {
 }
 
 /* Tools: Open Web Player + Settings as plain grey links (strip the
-   boilerplate .button styling — border/pill/padding). */
+   boilerplate .button styling — border/pill/padding). Matches the existing
+   `.nav-tools a.button:not(.nav-tool)` specificity so the border is removed. */
 header nav .nav-tools a:any-link,
-header nav .nav-tools a.button:any-link {
+header nav .nav-tools a.button:any-link:not(.nav-tool) {
   color: #333;
   font-family: var(--font-family);
   font-size: 0.75rem;
@@ -1392,18 +1393,20 @@ header nav .nav-tools a.button:any-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: none;
+  background: transparent;
   border: 0;
   border-radius: 0;
   padding: 0;
   margin: 0;
+  min-height: 0;
 }
 
 header nav .nav-tools a:any-link:hover,
-header nav .nav-tools a.button:any-link:hover {
+header nav .nav-tools a.button:any-link:not(.nav-tool):hover {
   color: #007185;
-  background: none;
+  background: transparent;
   text-decoration: underline;
+  transform: none;
 }
 
 header nav .nav-tools img {
