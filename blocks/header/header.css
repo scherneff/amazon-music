@@ -1403,10 +1403,12 @@ header nav .nav-tools img {
 }
 
 /* Hide the boilerplate auto-added Login button — the Amazon Music sub-nav
-   bar has no login affordance. */
-header nav .nav-auth-link,
-header nav .nav-auth-mobile-item {
-  display: none;
+   bar has no login affordance. JS injects it late with .button styling, so
+   force it hidden. */
+header nav a.nav-auth-link,
+header nav .nav-auth-mobile-item,
+header nav .nav-auth-desktop {
+  display: none !important;
 }
 
 /* Desktop flyout: compact white panel anchored under the trigger (not the
