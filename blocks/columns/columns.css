@@ -41,3 +41,190 @@
     order: unset;
   }
 }
+
+/* ==========================================================================
+   Amazon Music variants
+   These variants intentionally override base .columns rules; ordering-based
+   specificity warnings are expected and safe here.
+   ========================================================================== */
+
+/* stylelint-disable no-descending-specificity */
+
+/* Feature rows: small squiggle icon above bold text, evenly spaced */
+.columns.music-features {
+  padding: 48px 0;
+}
+
+.columns.music-features > div {
+  gap: var(--space-xl);
+  align-items: flex-start;
+}
+
+.columns.music-features > div > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  text-align: left;
+}
+
+.columns.music-features img {
+  width: 34px;
+  height: auto;
+  border-radius: 0;
+}
+
+.columns.music-features p {
+  margin: 0;
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.15;
+  color: #272727;
+}
+
+/* Features sit side by side from tablet up (small icon + short label items) */
+@media (width >= 600px) {
+  .columns.music-features > div {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-xl);
+  }
+
+  .columns.music-features > div > div {
+    flex: 1;
+  }
+}
+
+@media (width >= 900px) {
+  .columns.music-features > div {
+    gap: var(--space-3xl);
+  }
+}
+
+/* App banner: teal strip with copy on the left and phone image on the right */
+.columns.music-app {
+  background: #21d0d9;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.columns.music-app > div {
+  align-items: center;
+  gap: var(--space-l);
+}
+
+.columns.music-app p {
+  margin: 0;
+  padding: 20px var(--content-padding-inline);
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 1.125rem;
+  line-height: 1.4;
+  color: #14191a;
+  text-align: center;
+}
+
+.columns.music-app a:any-link {
+  color: #14191a;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.columns.music-app img {
+  width: 100%;
+  max-width: 260px;
+  border-radius: 0;
+  display: block;
+  margin: 0 auto;
+}
+
+.columns.music-app .columns-img-col {
+  align-self: flex-end;
+}
+
+@media (width >= 900px) {
+  .columns.music-app > div {
+    justify-content: space-between;
+  }
+
+  .columns.music-app p {
+    text-align: left;
+    font-size: 1.25rem;
+  }
+
+  .columns.music-app > div > div:first-child {
+    flex: 1 1 auto;
+  }
+
+  .columns.music-app .columns-img-col {
+    flex: 0 0 auto;
+  }
+}
+
+/* Dark cards: two centered headings with "See more" links on a dark band */
+.section:has(.columns.music-cards) {
+  background: #272727;
+}
+
+.columns.music-cards {
+  padding: 40px 0;
+}
+
+.columns.music-cards > div {
+  gap: 0;
+  align-items: stretch;
+}
+
+.columns.music-cards > div > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 24px 16px;
+  text-align: center;
+}
+
+/* Vertical divider between the two cards on desktop */
+@media (width >= 900px) {
+  .columns.music-cards > div > div + div {
+    border-left: 1px solid rgb(255 255 255 / 35%);
+  }
+}
+
+.columns.music-cards h4 {
+  margin: 0;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 1.375rem;
+  color: #fff;
+}
+
+.columns.music-cards p {
+  margin: 0;
+}
+
+.columns.music-cards .button-container {
+  display: inline;
+}
+
+.columns.music-cards a:any-link,
+.columns.music-cards a.button:any-link {
+  display: inline;
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-family);
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-decoration: underline;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: normal;
+}
+
+/* stylelint-enable no-descending-specificity */

@@ -1,0 +1,150 @@
+/* Music Hero — Amazon Music landing banner */
+
+.music-hero-container .music-hero-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.music-hero {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+}
+
+/* Background image row becomes the banner backdrop */
+.music-hero .music-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  line-height: 0;
+}
+
+.music-hero .music-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Content overlay */
+.music-hero .music-hero-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  padding: 56px var(--content-padding-inline);
+}
+
+.music-hero .music-hero-content > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  max-width: 720px;
+}
+
+/* Overlaid brand logo */
+.music-hero .music-hero-content picture {
+  display: block;
+  line-height: 0;
+}
+
+.music-hero .music-hero-content picture img {
+  width: auto;
+  max-width: 320px;
+  height: auto;
+  border-radius: 0;
+}
+
+/* Heading */
+.music-hero h1 {
+  margin: 8px 0 0;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: clamp(2rem, 6vw, 3rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+/* Subheading (first paragraph that is not a button or fine print) */
+.music-hero .music-hero-content p:not(.button-container, .music-hero-fineprint) {
+  margin: 0;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  line-height: 1.2;
+  color: #fff;
+}
+
+/* Fine print */
+.music-hero .music-hero-fineprint {
+  max-width: 620px;
+  margin: 6px auto 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: rgb(255 255 255 / 90%);
+}
+
+/* CTA pill button */
+.music-hero .button-container {
+  margin: 4px 0 8px;
+}
+
+.music-hero a.button:any-link,
+.music-hero .button-container a:any-link {
+  display: inline-block;
+  background: #f1ff53;
+  color: #14191a;
+  border: none;
+  border-radius: 104px;
+  padding: 14px 34px;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.music-hero a.button:any-link:hover,
+.music-hero .button-container a:any-link:hover {
+  filter: brightness(0.95);
+  transform: translateY(-1px);
+}
+
+/* Music Free variant: light gradient, dark heading, pink/purple CTA */
+.music-hero.free h1,
+.music-hero.free p:not(.button-container, .music-hero-fineprint) {
+  color: #272727;
+}
+
+.music-hero.free .music-hero-fineprint {
+  color: rgb(39 39 39 / 85%);
+}
+
+.music-hero.free a.button:any-link,
+.music-hero.free .button-container a:any-link {
+  background: #dd74f7;
+  color: #14191a;
+}
+
+@media (width >= 600px) {
+  .music-hero .music-hero-content {
+    padding: 72px var(--content-padding-inline);
+  }
+
+  .music-hero .music-hero-content picture img {
+    max-width: 380px;
+  }
+}
+
+@media (width >= 900px) {
+  .music-hero .music-hero-content {
+    padding: 90px var(--content-padding-inline);
+    min-height: 380px;
+    align-items: center;
+  }
+}
