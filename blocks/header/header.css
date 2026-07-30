@@ -1328,3 +1328,126 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
     max-width: 1264px;
   }
 }
+
+/* ==========================================================================
+   Amazon Music sub-nav theme
+   Overrides the default header theme to match amazon.com/music sub-nav bar:
+   white bar, Amazon Ember font, 12px grey nav links, image-card flyouts.
+   Intentional overrides of earlier selectors — dup/order rules disabled.
+   ========================================================================== */
+
+/* stylelint-disable no-duplicate-selectors */
+
+header {
+  --nav-height: 50px;
+  --nav-primary-size: 0.75rem;
+  --nav-primary-weight: 400;
+  --nav-hover-color: #007185;
+  --nav-focus-color: #007185;
+}
+
+/* White bar with light bottom border */
+header .nav-wrapper {
+  background-color: #fff;
+  border-bottom: 1px solid rgb(0 0 0 / 10%);
+  box-shadow: none;
+}
+
+/* Brand logo: source sub-nav logo is ~192x50 */
+header nav .nav-brand :is(img, svg) {
+  height: 30px;
+  width: auto;
+  max-width: none;
+}
+
+@media (width >= 900px) {
+  header nav .nav-brand :is(img, svg) {
+    height: 36px;
+  }
+}
+
+/* Primary nav links: 12px, grey #333, Amazon Ember */
+header nav .nav-sections .default-content-wrapper > ul > li > p > a,
+header nav .nav-sections .default-content-wrapper > ul > li.nav-drop > p > a {
+  color: #333;
+  font-family: var(--font-family);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+header nav .nav-sections .default-content-wrapper > ul > li > p > a:hover {
+  color: #007185;
+  text-decoration: underline;
+}
+
+/* Tools: Open Web Player + Settings as plain grey links */
+header nav .nav-tools a:any-link {
+  color: #333;
+  font-family: var(--font-family);
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+header nav .nav-tools a:any-link:hover {
+  color: #007185;
+  text-decoration: underline;
+}
+
+header nav .nav-tools img {
+  height: 24px;
+  width: auto;
+}
+
+/* Desktop flyout: white panel, subtle border + shadow, cards in a row */
+@media (width >= 900px) {
+  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul {
+    background-color: #fff;
+    border: 1px solid #bbb;
+    box-shadow: rgb(0 0 0 / 13%) 0 2px 4px 0;
+    border-radius: 4px;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega .nav-mega-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding: 18px 22px;
+  }
+
+  /* Each flyout card: thumbnail above label */
+  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega .nav-mega-inner > li {
+    flex: 0 0 auto;
+    width: 150px;
+    text-align: center;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega .nav-mega-inner > li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #111;
+    font-family: var(--font-family);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega .nav-mega-inner > li a:hover {
+    color: #007185;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega .nav-mega-inner > li a img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+  }
+}
+
+/* stylelint-enable no-duplicate-selectors */
