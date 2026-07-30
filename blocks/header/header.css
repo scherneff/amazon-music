@@ -1441,11 +1441,11 @@ header nav .nav-auth-desktop {
   header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner {
     display: flex;
     flex-wrap: nowrap;
-    gap: 16px;
+    gap: 24px;
     width: auto;
     max-width: none;
     margin: 0;
-    padding: 16px 20px;
+    padding: 28px 32px;
   }
 
   /* Each flyout card: thumbnail above centered label */
@@ -1453,7 +1453,7 @@ header nav .nav-auth-desktop {
     grid-column: auto;
     grid-row: auto;
     flex: 0 0 auto;
-    width: 128px;
+    width: 200px;
     text-align: center;
   }
 
@@ -1461,10 +1461,10 @@ header nav .nav-auth-desktop {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
     color: #111;
     font-family: var(--font-family);
-    font-size: 0.8125rem;
+    font-size: 0.9375rem;
     font-weight: 500;
     line-height: 1.3;
     text-decoration: none;
