@@ -174,6 +174,16 @@ footer .footer .footer-legal p {
   color: #999;
 }
 
+/* ── Mobile: single centered column ────────────────────────────── */
+@media (width <= 899px) {
+  footer .footer .footer-columns > div {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: center;
+    padding: 28px 20px;
+  }
+}
+
 /* ── Desktop: 4 columns across ─────────────────────────────────── */
 @media (width >= 900px) {
   footer .footer .footer-columns > div {
