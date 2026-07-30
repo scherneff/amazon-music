@@ -1485,4 +1485,35 @@ header nav .nav-auth-desktop {
   }
 }
 
+/* Mobile (< 900px): full-width, touch-friendly menu items */
+@media (width <= 899px) {
+  header nav {
+    padding: 0;
+  }
+
+  header nav .nav-hamburger,
+  header nav .nav-brand,
+  header nav .nav-tools {
+    padding-left: var(--space-m);
+    padding-right: var(--space-m);
+  }
+
+  header nav .nav-sections {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li > p > a,
+  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop > p > a {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li > p {
+    padding-left: var(--space-m);
+    padding-right: var(--space-m);
+  }
+}
+
 /* stylelint-enable no-duplicate-selectors */
