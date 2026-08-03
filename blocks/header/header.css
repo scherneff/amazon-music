@@ -1380,19 +1380,42 @@ header nav .nav-sections .default-content-wrapper > ul > li > p > a:hover {
   text-decoration: underline;
 }
 
-/* Tools: Open Web Player + Settings as plain grey links (strip the
-   boilerplate .button styling — border/pill/padding). Matches the existing
-   `.nav-tools a.button:not(.nav-tool)` specificity so the border is removed. */
+/* Tools: "Open Web Player" (app icon + label) and "Settings" as compact
+   Amazon sub-nav links. loadFragment decorates the nav like a page, so the two
+   <p> items live inside a .default-content-wrapper (not directly under
+   .nav-tools). Make the wrapper the horizontal row holding both items, and
+   each <p> the icon↔label row. The label text sits outside its <a>, so setting
+   color/font on the <p> covers both the loose label and the anchors. Strips the
+   boilerplate .button styling (border/pill/padding) via matching specificity. */
+header nav .nav-tools .default-content-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-s);
+}
+
+header nav .nav-tools p {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-s);
+  color: #0f1111;
+  font-family: var(--font-family);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
 header nav .nav-tools a:any-link,
 header nav .nav-tools a.button:any-link:not(.nav-tool) {
-  color: #333;
-  font-family: var(--font-family);
-  font-size: 0.75rem;
-  font-weight: 400;
+  color: inherit;
+  font: inherit;
+  text-transform: none;
+  letter-spacing: 0;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--space-s);
   background: transparent;
   border: 0;
   border-radius: 0;
@@ -1410,8 +1433,9 @@ header nav .nav-tools a.button:any-link:not(.nav-tool):hover {
 }
 
 header nav .nav-tools img {
-  height: 24px;
+  height: 26px;
   width: auto;
+  border-radius: 4px;
 }
 
 /* Hide the boilerplate auto-added Login button — the Amazon Music sub-nav
@@ -1426,6 +1450,12 @@ header nav .nav-auth-desktop {
 /* Desktop flyout: compact white panel anchored under the trigger (not the
    demo's full-bleed bar), with a row of image cards. */
 @media (width >= 900px) {
+  /* More breathing room between "Open Web Player" and "Settings" (mobile
+     stays tight to avoid crowding the brand/hamburger row). */
+  header nav .nav-tools .default-content-wrapper {
+    gap: var(--space-l);
+  }
+
   header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega {
     position: relative;
   }
@@ -1537,6 +1567,15 @@ header nav .nav-auth-desktop {
   header nav .nav-sections .default-content-wrapper > ul > li > p {
     padding-left: var(--space-m);
     padding-right: var(--space-m);
+  }
+
+  /* Compact tools: "Open Web Player" + "Settings" + logo + hamburger won't
+     fit on a phone row, so show the web-player as icon-only (hide its long
+     label via font-size:0 — the icon keeps its fixed height) and keep the
+     short "Settings" label. */
+  header nav .nav-tools .default-content-wrapper > p:first-child {
+    font-size: 0;
+    gap: 0;
   }
 }
 
