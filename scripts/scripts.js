@@ -43,13 +43,12 @@ function isExperimentationEnabled() {
     || Object.keys(getAllMetadata('audience')).length;
 }
 
-const THEME_STORAGE_KEY = 'demo-theme';
-
-function applyTheme(theme) {
-  let t = theme ?? (() => { try { return localStorage.getItem(THEME_STORAGE_KEY); } catch (e) { return null; } })();
-  if (t !== 'light' && t !== 'dark') {
-    t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  }
+function applyTheme() {
+  // Site is light-only: always render the light scheme, ignoring any stored
+  // preference or OS setting, so every environment matches. There is no theme
+  // toggle in the UI, so a stale localStorage value could otherwise leave an
+  // environment stuck on dark.
+  const t = 'light';
   document.documentElement.dataset.theme = t;
   document.body.classList.remove('light-scheme', 'dark-scheme');
   document.body.classList.add(`${t}-scheme`);
@@ -544,7 +543,7 @@ if (!window.hlx?.suppressLoadPage) {
     }, { once: true });
   }
 
-  window.addEventListener('aem-theme-change', (e) => {
-    applyTheme(e.detail?.theme);
+  window.addEventListener('aem-theme-change', () => {
+    applyTheme();
   });
 }
