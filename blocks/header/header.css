@@ -1,5 +1,12 @@
 /* header – mobile first, 600/900/1200px breakpoints */
 /* stylelint-disable no-descending-specificity -- header cascade order is intentional across breakpoints */
+
+/* Nav is authored as a real bullet list, so the DA quick-edit canvas wraps the
+   top-level <ul> in a .prosemirror-editor > .ProseMirror box, breaking the
+   ">" from .default-content-wrapper to <ul>. Every such selector below adds
+   an :is(...) branch through .prosemirror-editor so nav styling still
+   applies while editing; everything nested under <ul> is unaffected since
+   only the outermost editable element gets wrapped. */
 header {
   --header-hover-bg: transparent;
   --header-link-hover-bg: transparent;
@@ -250,31 +257,31 @@ header nav .nav-sections ul {
   }
 
   header nav .nav-sections ul,
-  header nav .nav-sections .default-content-wrapper > ul > li,
-  header nav .nav-sections .default-content-wrapper > ul > li > ul {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li,
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul {
     text-align: center;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > p {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > p {
     justify-content: center;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > p > a {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > p > a {
     justify-content: center;
     text-align: center;
   }
 }
 
-header nav .nav-sections .default-content-wrapper > ul > li {
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li {
   font-weight: var(--nav-primary-weight);
   border-bottom: 1px solid light-dark(var(--color-gray-200), var(--color-gray-600));
 }
 
-header nav .nav-sections .default-content-wrapper > ul > li:last-child {
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li:last-child {
   border-bottom: 0;
 }
 
-header nav .nav-sections .default-content-wrapper > ul > li > p {
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > p {
   margin: 0;
   padding: var(--nav-item-padding);
   position: relative;
@@ -283,11 +290,11 @@ header nav .nav-sections .default-content-wrapper > ul > li > p {
   align-items: center;
 }
 
-header nav .nav-sections .default-content-wrapper > ul > li.nav-drop {
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop {
   cursor: pointer;
 }
 
-header nav .nav-sections .default-content-wrapper > ul > li.nav-drop > p > a {
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop > p > a {
   flex: 1;
   min-height: 44px;
   display: flex;
@@ -296,11 +303,11 @@ header nav .nav-sections .default-content-wrapper > ul > li.nav-drop > p > a {
 
 /* chevron: mobile only (p::after); desktop uses li::after below */
 @media (width <= 899px) {
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop > p {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop > p {
     padding-right: calc(var(--nav-item-padding) + 26px);
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop > p > .nav-submenu-toggle {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop > p > .nav-submenu-toggle {
     position: absolute;
     right: var(--nav-item-padding);
     top: 50%;
@@ -315,7 +322,7 @@ header nav .nav-sections .default-content-wrapper > ul > li.nav-drop > p > a {
     cursor: pointer;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop > p > .nav-submenu-toggle::before {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop > p > .nav-submenu-toggle::before {
     content: '';
     display: block;
     width: 6px;
@@ -329,30 +336,30 @@ header nav .nav-sections .default-content-wrapper > ul > li.nav-drop > p > a {
     transition: transform 0.2s ease;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop[aria-expanded='true'] > p > .nav-submenu-toggle::before {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop[aria-expanded='true'] > p > .nav-submenu-toggle::before {
     transform: rotate(-45deg);
   }
 }
 
-header nav .nav-sections .default-content-wrapper > ul > li > p > a {
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > p > a {
   display: block;
   color: inherit;
   text-decoration: none;
 }
 
-header nav .nav-sections .default-content-wrapper > ul > li > ul {
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul {
   display: none;
   padding: 0 var(--nav-dropdown-padding) var(--nav-dropdown-padding);
   margin: 0;
   border-radius: var(--nav-radius);
 }
 
-header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li[aria-expanded='true'] > ul {
   display: block;
 }
 
 /* mega menu groups: heading (e.g. BEGINNERS) + nested ul with items */
-header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-mega-heading {
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul > li.nav-mega-heading {
   padding: var(--space-l) 0 var(--space-s);
   font-size: var(--nav-heading-size);
   font-weight: var(--nav-heading-weight);
@@ -360,11 +367,11 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-mega-h
   border-bottom: 0;
 }
 
-header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-mega-heading:first-child {
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul > li.nav-mega-heading:first-child {
   padding-top: 0;
 }
 
-header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-mega-heading > p {
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul > li.nav-mega-heading > p {
   margin: 0;
   padding: 0;
   font-size: inherit;
@@ -372,21 +379,21 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-mega-h
 }
 
 /* sub-items under headings: align with heading, normal case */
-header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-mega-heading > ul {
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul > li.nav-mega-heading > ul {
   padding: 0;
   margin: 0;
   background: none;
   border-radius: 0;
 }
 
-header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-mega-heading > ul a {
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul > li.nav-mega-heading > ul a {
   font-size: var(--nav-item-size);
   text-transform: none;
   font-weight: var(--nav-item-weight);
   padding: var(--space-xs) 0;
 }
 
-header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-mega-heading > ul > li.nav-mega-item {
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul > li.nav-mega-heading > ul > li.nav-mega-item {
   padding: var(--space-s) 0;
   font-weight: var(--nav-item-weight);
   border-bottom: 0;
@@ -394,18 +401,18 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-mega-h
   border-left: 0;
 }
 
-header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-mega-heading > ul > li.nav-mega-item > a {
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul > li.nav-mega-heading > ul > li.nav-mega-item > a {
   padding: 0;
 }
 
-header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-mega-item {
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul > li.nav-mega-item {
   padding: var(--space-s) 0;
   font-size: var(--nav-item-size);
   font-weight: var(--nav-item-weight);
   border-bottom: 0;
 }
 
-header nav .nav-sections .default-content-wrapper > ul > li > ul > li:not(.nav-mega-heading, .nav-mega-item) {
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul > li:not(.nav-mega-heading, .nav-mega-item) {
   padding: var(--space-xs) 0;
   font-size: var(--nav-item-size);
   font-weight: var(--nav-item-weight);
@@ -413,12 +420,12 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:not(.nav-m
 
 /* mobile: mega menu accordion – structure with .nav-mega-inner */
 @media (width <= 899px) {
-  header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-mega-promo,
-  header nav .nav-sections .default-content-wrapper > ul > li > ul > .nav-mega-inner > li.nav-mega-promo {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul > li.nav-mega-promo,
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul > .nav-mega-inner > li.nav-mega-promo {
     display: none;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > ul {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul {
     background-color: var(--nav-bg-dropdown-mobile);
     padding: var(--nav-dropdown-padding);
     margin: 0 var(--nav-gap) var(--nav-gap);
@@ -426,40 +433,40 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:not(.nav-m
     border: 1px solid light-dark(var(--color-gray-200), var(--color-gray-600));
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > ul > .nav-mega-inner {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul > .nav-mega-inner {
     display: block;
     padding: 0;
     margin: 0;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > ul > .nav-mega-inner > li.nav-mega-heading {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul > .nav-mega-inner > li.nav-mega-heading {
     padding: var(--space-m) 0 var(--space-s);
     font-size: var(--nav-heading-size);
     font-weight: var(--nav-heading-weight);
     color: var(--dark-color);
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > ul > .nav-mega-inner > li.nav-mega-heading:first-child {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul > .nav-mega-inner > li.nav-mega-heading:first-child {
     padding-top: 0;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > ul > .nav-mega-inner > li.nav-mega-heading > p {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul > .nav-mega-inner > li.nav-mega-heading > p {
     margin: 0 0 var(--space-s);
     padding: 0;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > ul > .nav-mega-inner > li.nav-mega-heading > ul {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul > .nav-mega-inner > li.nav-mega-heading > ul {
     list-style: none;
     padding: 0;
     margin: 0;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > ul > .nav-mega-inner > li.nav-mega-heading > ul > li {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul > .nav-mega-inner > li.nav-mega-heading > ul > li {
     padding: 0;
     margin: 0;    
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > ul > .nav-mega-inner > li.nav-mega-heading > ul a {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul > .nav-mega-inner > li.nav-mega-heading > ul a {
     display: block;
     padding: var(--space-s) 0;
     font-size: var(--nav-item-size);
@@ -469,32 +476,32 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:not(.nav-m
     text-decoration: none;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > ul > .nav-mega-inner > li.nav-mega-item {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul > .nav-mega-inner > li.nav-mega-item {
     padding: var(--space-s) 0;
     font-size: var(--nav-item-size);
     font-weight: var(--nav-item-weight);
     border-bottom: 1px solid light-dark(var(--color-gray-200), var(--color-gray-600));
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > ul > .nav-mega-inner > li.nav-mega-item:last-child {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul > .nav-mega-inner > li.nav-mega-item:last-child {
     border-bottom: 0;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > ul > .nav-mega-inner > li.nav-mega-item > a {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul > .nav-mega-inner > li.nav-mega-item > a {
     display: block;
     padding: var(--space-s) 0;
     color: inherit;
     text-decoration: none;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > ul > .nav-mega-inner > li.nav-mega-heading + li.nav-mega-heading {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul > .nav-mega-inner > li.nav-mega-heading + li.nav-mega-heading {
     margin-top: var(--space-m);
     padding-top: var(--space-m);
     border-top: 1px solid light-dark(var(--color-gray-200), var(--color-gray-600));
   }
 }
 
-header nav .nav-sections .default-content-wrapper > ul > li > ul a {
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul a {
   display: block;
   padding: var(--space-xs) 0;
   font-size: inherit;
@@ -503,8 +510,8 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul a {
   color: inherit;
 }
 
-header nav .nav-sections .default-content-wrapper > ul > li > ul a:hover,
-header nav .nav-sections .default-content-wrapper > ul > li > ul a:focus-visible {
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul a:hover,
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul a:focus-visible {
   color: var(--nav-hover-color);
 }
 
@@ -567,14 +574,14 @@ header nav .nav-auth-link .nav-auth-info {
   text-transform: none;
 }
 
-header nav .nav-sections .default-content-wrapper > ul > li.nav-auth-mobile-item > p > a {
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-auth-mobile-item > p > a {
   display: block;
   color: inherit;
   text-decoration: none;
 }
 
-header nav .nav-sections .default-content-wrapper > ul > li.nav-auth-mobile-item > p > a:hover,
-header nav .nav-sections .default-content-wrapper > ul > li.nav-auth-mobile-item > p > a:focus-visible {
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-auth-mobile-item > p > a:hover,
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-auth-mobile-item > p > a:focus-visible {
   color: var(--nav-hover-color);
 }
 
@@ -585,11 +592,11 @@ header nav .nav-tools a.button:any-link:not(.nav-tool):hover {
   box-shadow: none;
 }
 
-header nav .nav-sections .default-content-wrapper > ul > li > ul p.button-container {
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul p.button-container {
   margin: 0;
 }
 
-header nav .nav-sections .default-content-wrapper > ul > li > ul a.button:any-link {
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > ul a.button:any-link {
   display: block;
   padding: var(--space-xs) 0;
 }
@@ -822,7 +829,7 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
 
 /* desktop: 900px */
 @media (width >= 900px) {
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop > p > .nav-submenu-toggle {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop > p > .nav-submenu-toggle {
     display: none;
   }
 
@@ -862,7 +869,7 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
     width: 100%;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) {
     justify-content: flex-start;
     display: flex;
     gap: var(--space-l);
@@ -888,7 +895,7 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
     align-self: unset;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li {
     position: relative;
     flex: 0 1 auto;
     display: inline-flex;
@@ -896,7 +903,7 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
     border-bottom: 0;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > p {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > p {
     margin: 0;
     display: inline-flex;
     align-items: center;
@@ -907,26 +914,26 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
     letter-spacing: 0.01em;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > p > a {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > p > a {
     padding: var(--space-xs) var(--space-s);
     border-radius: var(--nav-radius);
     line-height: 1.2;
     transition: color 0.18s ease, background-color 0.18s ease;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > p > a:hover,
-  header nav .nav-sections .default-content-wrapper > ul > li > p > a:focus-visible {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > p > a:hover,
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > p > a:focus-visible {
     color: var(--nav-hover-color);
     background-color: var(--nav-bg-link-hover);
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > p > a:focus-visible {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > p > a:focus-visible {
     outline: 2px solid var(--nav-focus-color);
     outline-offset: 2px;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li:not(.nav-drop) a:hover,
-  header nav .nav-sections .default-content-wrapper > ul > li:not(.nav-drop) a:focus-visible {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li:not(.nav-drop) a:hover,
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li:not(.nav-drop) a:focus-visible {
     color: var(--nav-hover-color);
     text-decoration: underline;
     text-underline-offset: 0.35em;
@@ -967,7 +974,7 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
   }
 
   /* regular dropdown – desktop */
-  header nav .nav-sections .default-content-wrapper > ul > li:not(.nav-drop-mega) > ul {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li:not(.nav-drop-mega) > ul {
     display: block;
     position: absolute;
     top: calc(100% + var(--nav-dropdown-offset));
@@ -989,7 +996,7 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
     transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li:not(.nav-drop-mega)[aria-expanded='true'] > ul {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li:not(.nav-drop-mega)[aria-expanded='true'] > ul {
     visibility: visible;
     opacity: 1;
     transform: translate(-50%, var(--space-xs));
@@ -997,7 +1004,7 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
     transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li:not(.nav-drop-mega) > ul::before {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li:not(.nav-drop-mega) > ul::before {
     content: '';
     position: absolute;
     top: calc(-1 * var(--nav-desktop-arrow-size));
@@ -1011,7 +1018,7 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
   }
 
   /* invisible hover bridge above regular dropdown to prevent close on gap traversal */
-  header nav .nav-sections .default-content-wrapper > ul > li:not(.nav-drop-mega) > ul::after {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li:not(.nav-drop-mega) > ul::after {
     content: '';
     position: absolute;
     bottom: 100%;
@@ -1020,16 +1027,16 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
     height: calc(var(--nav-dropdown-offset) + var(--space-m));
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li:not(.nav-drop-mega) > ul > li {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li:not(.nav-drop-mega) > ul > li {
     padding: 0;
     border: 0;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li:not(.nav-drop-mega) > ul > li + li {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li:not(.nav-drop-mega) > ul > li + li {
     border-top: 1px solid var(--header-drop-border);
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li:not(.nav-drop-mega) > ul a {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li:not(.nav-drop-mega) > ul a {
     display: block;
     padding: var(--nav-dropdown-item-padding);
     border-radius: var(--nav-radius);
@@ -1037,20 +1044,20 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
     transition: background-color 0.18s ease, color 0.18s ease;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li:not(.nav-drop-mega) > ul a:hover,
-  header nav .nav-sections .default-content-wrapper > ul > li:not(.nav-drop-mega) > ul a:focus-visible {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li:not(.nav-drop-mega) > ul a:hover,
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li:not(.nav-drop-mega) > ul a:focus-visible {
     background-color: var(--nav-bg-hover-item);
     color: var(--nav-hover-color);
     text-decoration: none;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li:not(.nav-drop-mega) > ul a:focus-visible {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li:not(.nav-drop-mega) > ul a:focus-visible {
     outline: 2px solid var(--nav-focus-color);
     outline-offset: -2px;
   }
 
   /* mega menu – desktop: full-width panel, centered content */
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul {
     display: flex;
     justify-content: center;
     position: fixed;
@@ -1071,7 +1078,7 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
     overflow: hidden;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega[aria-expanded='true'] > ul {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega[aria-expanded='true'] > ul {
     visibility: visible;
     opacity: 1;
     transform: translateY(0);
@@ -1079,7 +1086,7 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
     transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul::before {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul::before {
     content: '';
     position: absolute;
     top: calc(-1 * var(--nav-desktop-arrow-size));
@@ -1092,7 +1099,7 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
   }
 
   /* invisible hover bridge above mega dropdown to prevent close on gap traversal */
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul::after {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul::after {
     content: '';
     position: absolute;
     bottom: 100%;
@@ -1101,7 +1108,7 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
     height: var(--space-l);
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul > .nav-mega-inner {
     display: grid;
     grid-template-columns: repeat(var(--mega-columns, 2), minmax(var(--nav-desktop-mega-min-col), 1fr));
     align-items: start;
@@ -1111,7 +1118,7 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
     padding: 0;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner > li {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul > .nav-mega-inner > li {
     grid-column: var(--mega-group, 1);
     grid-row: var(--mega-row, auto);
     border: 0;
@@ -1121,7 +1128,7 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
     overflow-wrap: break-word;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-heading {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-heading {
     display: block;
     margin-top: 0;
     padding: 0 0 var(--nav-gap);
@@ -1131,28 +1138,28 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
     line-height: 1.2;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-heading > p {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-heading > p {
     margin: 0 0 var(--space-s);
     padding: 0;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-heading > ul {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-heading > ul {
     list-style: none;
     padding: 0;
     margin: 0;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-heading > ul > li {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-heading > ul > li {
     padding: 0;
     margin: 0;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul.nav-mega-has-groups > .nav-mega-inner > li.nav-mega-item {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul.nav-mega-has-groups > .nav-mega-inner > li.nav-mega-item {
     padding-top: var(--space-xs);
   }
 
   /* mega items: direct links (e.g. Tools) get full padding */
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-item > a {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-item > a {
     display: block;
     padding: var(--nav-dropdown-item-padding);
     border-radius: var(--nav-radius);
@@ -1165,7 +1172,7 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
   }
 
   /* mega items under headings: align with heading, proper padding for hover */
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-heading > ul a {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-heading > ul a {
     display: block;
     padding: var(--space-s) var(--space-s);
     border-radius: var(--nav-radius);
@@ -1178,7 +1185,7 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
     max-width: max-content;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-promo {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-promo {
     grid-column: var(--mega-group, 2);
     grid-row: 1 / span 20;
     align-self: start;
@@ -1186,7 +1193,7 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
     min-width: 0;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-promo a {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-promo a {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -1200,7 +1207,7 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
     padding: inherit;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-promo picture {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-promo picture {
     display: block;
     border-radius: var(--nav-radius);
     overflow: hidden;
@@ -1210,7 +1217,7 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
     max-height: calc(var(--nav-mega-promo-img-height) + var(--space-m));
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-promo img {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-promo img {
     display: block;
     width: 100%;
     height: var(--nav-mega-promo-img-height);
@@ -1220,37 +1227,37 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
     object-position: center;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-promo a:hover,
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-promo a:focus-visible {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-promo a:hover,
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-promo a:focus-visible {
     background-color: var(--nav-bg-hover-item);
     box-shadow: none;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-heading > ul a:hover,
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-heading > ul a:focus-visible {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-heading > ul a:hover,
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-heading > ul a:focus-visible {
     color: var(--nav-hover-color);
     background-color: var(--nav-bg-hover-item);
     text-decoration: none;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-heading > ul a:focus-visible {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-heading > ul a:focus-visible {
     outline: 2px solid var(--nav-focus-color);
     outline-offset: 2px;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-item > a:hover,
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-item > a:focus-visible {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-item > a:hover,
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-item > a:focus-visible {
     background-color: var(--nav-bg-hover-item);
     color: var(--nav-hover-color);
     text-decoration: none;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-item > a:focus-visible {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-item > a:focus-visible {
     outline: 2px solid var(--nav-focus-color);
     outline-offset: 2px;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-item + li.nav-mega-item {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul > .nav-mega-inner > li.nav-mega-item + li.nav-mega-item {
     border-top: 0;
   }
 
@@ -1276,19 +1283,19 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
     display: none;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-auth-mobile-item {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-auth-mobile-item {
     border-bottom: 0;
     padding: var(--space-m) 0;
     text-align: center;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-auth-mobile-item > p {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-auth-mobile-item > p {
     margin: 0;
     padding: 0;
     justify-content: center;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-auth-mobile-item > p > a.button.nav-auth-mobile:any-link {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-auth-mobile-item > p > a.button.nav-auth-mobile:any-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -1306,8 +1313,8 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
     text-decoration: none;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-auth-mobile-item > p > a.button.nav-auth-mobile:any-link:hover,
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-auth-mobile-item > p > a.button.nav-auth-mobile:any-link:focus-visible {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-auth-mobile-item > p > a.button.nav-auth-mobile:any-link:hover,
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-auth-mobile-item > p > a.button.nav-auth-mobile:any-link:focus-visible {
     background: var(--color-rust);
     color: var(--color-light);
     transform: none;
@@ -1317,7 +1324,7 @@ header nav .nav-tools .nav-language-menu a:focus-visible {
 }
 
 @media (width >= 900px) {
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-auth-mobile-item {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-auth-mobile-item {
     display: none;
   }
 }
@@ -1367,15 +1374,15 @@ header nav .nav-brand :is(img, svg) {
 }
 
 /* Primary nav links: 12px, grey #333, Amazon Ember */
-header nav .nav-sections .default-content-wrapper > ul > li > p > a,
-header nav .nav-sections .default-content-wrapper > ul > li.nav-drop > p > a {
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > p > a,
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop > p > a {
   color: #333;
   font-family: var(--font-family);
   text-transform: none;
   letter-spacing: 0;
 }
 
-header nav .nav-sections .default-content-wrapper > ul > li > p > a:hover {
+header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > p > a:hover {
   color: #007185;
   text-decoration: underline;
 }
@@ -1456,11 +1463,11 @@ header nav .nav-auth-desktop {
     gap: var(--space-l);
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega {
     position: relative;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul {
     position: fixed;
     left: 50%;
     right: auto;
@@ -1479,20 +1486,20 @@ header nav .nav-auth-desktop {
 
   /* Keep the panel horizontally centered in both closed and open states
      (override the demo's translateY-only transforms). */
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul {
     transform: translateX(-50%) translateY(-4px);
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega[aria-expanded='true'] > ul {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega[aria-expanded='true'] > ul {
     transform: translateX(-50%) translateY(0);
   }
 
   /* Remove the demo arrow marker — Amazon flyout has none */
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul::before {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul::before {
     display: none;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul > .nav-mega-inner {
     display: flex;
     flex-wrap: nowrap;
     gap: 28px;
@@ -1503,7 +1510,7 @@ header nav .nav-auth-desktop {
   }
 
   /* Each flyout card: thumbnail above centered label */
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner > li {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul > .nav-mega-inner > li {
     grid-column: auto;
     grid-row: auto;
     flex: 0 0 auto;
@@ -1511,7 +1518,7 @@ header nav .nav-auth-desktop {
     text-align: center;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner > li a {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul > .nav-mega-inner > li a {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1527,11 +1534,11 @@ header nav .nav-auth-desktop {
     padding: 0;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner > li a:hover {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul > .nav-mega-inner > li a:hover {
     color: #007185;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop-mega > ul > .nav-mega-inner > li a img {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop-mega > ul > .nav-mega-inner > li a img {
     width: 100%;
     height: auto;
     border-radius: 4px;
@@ -1558,13 +1565,13 @@ header nav .nav-auth-desktop {
     padding-right: 0;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > p > a,
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop > p > a {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > p > a,
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li.nav-drop > p > a {
     font-size: 1rem;
     font-weight: 600;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > p {
+  header nav .nav-sections :is(.default-content-wrapper > ul, .default-content-wrapper .prosemirror-editor ul) > li > p {
     padding-left: var(--space-m);
     padding-right: var(--space-m);
   }
@@ -1573,7 +1580,8 @@ header nav .nav-auth-desktop {
      fit on a phone row, so show the web-player as icon-only (hide its long
      label via font-size:0 — the icon keeps its fixed height) and keep the
      short "Settings" label. */
-  header nav .nav-tools .default-content-wrapper > p:first-child {
+  header nav .nav-tools .default-content-wrapper > p:first-child,
+  header nav .nav-tools .default-content-wrapper > .prosemirror-editor:first-child p {
     font-size: 0;
     gap: 0;
   }

@@ -119,6 +119,7 @@
   --font-family: montserrat, "Trebuchet MS", sans-serif;
   --font-family-serif: "EB Garamond", georgia, serif;
   --font-family-mono: "JetBrains Mono", "Courier New", monospace;
+  --font-family-display: 'Sharp Grotesk', sharp-grotesk-fallback, arial, sans-serif;
   --body-font-family: var(--font-family);
   --heading-font-family: var(--font-family-serif);
 
@@ -251,6 +252,12 @@ body.theme-dark {
   src: local('Arial');
 }
 
+@font-face {
+  font-family: sharp-grotesk-fallback;
+  size-adjust: 129.15%;
+  src: local('Arial');
+}
+
 /* ==========================================================================
    Base layout and LCP-critical styles (boilerplate structure preserved)
    ========================================================================== */
@@ -270,7 +277,8 @@ body {
   display: none;
   margin: 0;
   box-sizing: border-box;
-  background-color: var(--background-color);
+
+  /* background-color: var(--background-color); */
   background-image:
     radial-gradient(ellipse 80% 50% at 12% 8%,
       light-dark(rgb(197 160 89 / 9%), rgb(197 160 89 / 4%)) 0%, transparent 60%),

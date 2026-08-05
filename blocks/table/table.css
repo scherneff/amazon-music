@@ -63,7 +63,11 @@
   margin: 0;
 }
 
-.table table td p + p {
+/* Multiple paragraphs in one cell are each edited individually in the DA
+   canvas; the wrapper boxes stay adjacent siblings even though the <p>s
+   themselves no longer are. */
+.table table td p + p,
+.table table td .prosemirror-editor + .prosemirror-editor p {
   margin-top: 0.25em;
 }
 

@@ -121,7 +121,11 @@ footer .footer .footer-locale img {
   display: block;
 }
 
-footer .footer .footer-locale p:not(:first-child) a {
+/* Each locale <p> is edited individually in the DA canvas (wrapped in its own
+   .prosemirror-editor), so p:not(:first-child) never matches there — anchor
+   the "not first" check on the wrapper instead. */
+footer .footer .footer-locale p:not(:first-child) a,
+footer .footer .footer-locale .prosemirror-editor:not(:first-child) p a {
   display: inline-block;
   padding: 8px 12px;
   border: 1px solid #848a95;
@@ -130,7 +134,8 @@ footer .footer .footer-locale p:not(:first-child) a {
   color: #ddd;
 }
 
-footer .footer .footer-locale p:not(:first-child) a:hover {
+footer .footer .footer-locale p:not(:first-child) a:hover,
+footer .footer .footer-locale .prosemirror-editor:not(:first-child) p a:hover {
   border-color: #fff;
   text-decoration: none;
 }

@@ -68,12 +68,11 @@
   border-radius: 0;
 }
 
-/* Heading — condensed grotesk (roboto-condensed) as a stand-in for the
-   original's "Sharp Grotesk", so it reads condensed and fits one line.
-   roboto-condensed-fallback is the size-adjusted CLS-safe fallback. */
+/* Heading — Sharp Grotesk, matching the original amazon.com/music banner.
+   sharp-grotesk-fallback is the size-adjusted CLS-safe fallback. */
 .music-hero h1 {
   margin: 8px 0 0;
-  font-family: roboto-condensed, roboto-condensed-fallback, 'Arial Narrow', sans-serif;
+  font-family: var(--font-family-display);
   font-weight: 700;
   font-size: clamp(2rem, 6vw, 3rem);
   line-height: 1.15;

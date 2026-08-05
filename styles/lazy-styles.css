@@ -23,8 +23,10 @@
       transform 0.8s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
   }
 
-  /* Stagger children inside revealed sections for cascading entrance */
-  :is(main, article.article-body) > .section.will-reveal.revealed > div > :is(h1, h2, h3, h4, p, .block, .button-container, picture) {
+  /* Stagger children inside revealed sections for cascading entrance.
+     h1-h4/p get individually wrapped in .prosemirror-editor boxes in the DA
+     canvas, so match those wrappers too — they map 1:1 to the same content. */
+  :is(main, article.article-body) > .section.will-reveal.revealed > div > :is(h1, h2, h3, h4, p, .block, .button-container, picture, .prosemirror-editor) {
     animation: content-enter 0.7s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) both;
   }
 
@@ -160,8 +162,10 @@ header .nav-wrapper.scrolled {
   filter: brightness(1.04);
 }
 
-/* Inline images get subtle rounded corners for a polished look */
-:is(main, article.article-body) > .section > div > p > picture img {
+/* Inline images get subtle rounded corners for a polished look. The <p> is
+   wrapped in .prosemirror-editor in the DA canvas, breaking the "> p" hop. */
+:is(main, article.article-body) > .section > div > p > picture img,
+:is(main, article.article-body) > .section > div .prosemirror-editor p > picture img {
   border-radius: 8px;
 }
 
