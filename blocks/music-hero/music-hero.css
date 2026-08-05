@@ -61,7 +61,10 @@
   line-height: 0;
 }
 
-.music-hero .music-hero-content picture img {
+/* Target img directly (not just picture img): the content area only ever
+   holds the one logo image, and this keeps sizing intact even where the
+   <picture>/<source> markup isn't preserved (e.g. the DA editor canvas). */
+.music-hero .music-hero-content img {
   width: auto;
   max-width: 150px;
   height: auto;
@@ -104,8 +107,13 @@
   margin: 4px 0 8px;
 }
 
+/* Target any link in the content area directly (not just .button/
+   .button-container): there's only ever the one CTA link there, and this
+   keeps the pill styling intact even where those classes aren't preserved
+   (e.g. the DA editor canvas). */
 .music-hero a.button:any-link,
-.music-hero .button-container a:any-link {
+.music-hero .button-container a:any-link,
+.music-hero .music-hero-content a:any-link {
   display: inline-block;
   background: #f1ff53;
   color: #14191a;
@@ -123,7 +131,8 @@
 }
 
 .music-hero a.button:any-link:hover,
-.music-hero .button-container a:any-link:hover {
+.music-hero .button-container a:any-link:hover,
+.music-hero .music-hero-content a:any-link:hover {
   filter: brightness(0.95);
   transform: translateY(-1px);
 }
@@ -139,7 +148,8 @@
 }
 
 .music-hero.free a.button:any-link,
-.music-hero.free .button-container a:any-link {
+.music-hero.free .button-container a:any-link,
+.music-hero.free .music-hero-content a:any-link {
   background: #dd74f7;
   color: #14191a;
 }
