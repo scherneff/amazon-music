@@ -63,11 +63,13 @@
 
 /* Target img directly (not just picture img): the content area only ever
    holds the one logo image, and this keeps sizing intact even where the
-   <picture>/<source> markup isn't preserved (e.g. the DA editor canvas). */
+   <picture>/<source> markup isn't preserved (e.g. the DA editor canvas).
+   !important guards against the DA editor's own inline width/height
+   (pulled from the img's w/h attributes) overriding this sizing there. */
 .music-hero .music-hero-content img {
-  width: auto;
-  max-width: 150px;
-  height: auto;
+  width: auto !important;
+  max-width: 150px !important;
+  height: auto !important;
   border-radius: 0;
 }
 
@@ -93,13 +95,20 @@
   color: #fff;
 }
 
-/* Fine print */
-.music-hero .music-hero-fineprint {
-  max-width: 620px;
-  margin: 6px auto 0;
-  font-size: 0.8125rem;
-  line-height: 1.5;
-  color: rgb(255 255 255 / 90%);
+/* Fine print. Also matched by "the paragraph right after the CTA link" (and,
+   in the DA editor, its wrapper): the editor doesn't reliably keep the
+   music-hero-fineprint class this block's JS adds during decoration, so
+   without this the paragraph falls back to the subheading rule above.
+   !important guards against that rule's higher class-based specificity. */
+/* stylelint-disable no-descending-specificity -- intentional: !important above wins regardless of source order */
+.music-hero .music-hero-fineprint,
+.music-hero .music-hero-content p:has(a) + p,
+.music-hero .music-hero-content .prosemirror-editor:has(a) + .prosemirror-editor p {
+  max-width: 620px !important;
+  margin: 6px auto 0 !important;
+  font-size: 0.8125rem !important;
+  line-height: 1.5 !important;
+  color: rgb(255 255 255 / 90%) !important;
 }
 
 /* CTA pill button */
@@ -142,6 +151,7 @@
 .music-hero.free p:not(.button-container, .music-hero-fineprint) {
   color: #272727;
 }
+/* stylelint-enable no-descending-specificity */
 
 .music-hero.free .music-hero-fineprint {
   color: rgb(39 39 39 / 85%);
