@@ -576,11 +576,11 @@ main .icon.icon-logo {
   margin-bottom: 4px;
 }
 
-/* Reserve space for unsized images to reduce CLS */
+/* Reserve space for unsized images to reduce CLS 
 main img:not([width], [height]) {
   aspect-ratio: 16 / 9;
   object-fit: cover;
-}
+} */
 
 /* sections – boilerplate structure with design tokens */
 :is(main, article.article-body) > .section {
