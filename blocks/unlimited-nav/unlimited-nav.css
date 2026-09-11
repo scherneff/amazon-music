@@ -1,0 +1,94 @@
+/* unlimited-nav — page-specific top navigation for the Unlimited landing page */
+.unlimited-nav-wrapper {
+  background: #131313;
+}
+
+.unlimited-nav {
+  --un-nav-bg: #131313;
+  --un-nav-text: #fff;
+  --un-nav-accent: #25d1da;
+  --un-nav-border: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  background: var(--un-nav-bg);
+  border-bottom: 2px solid var(--un-nav-border);
+}
+
+/* Row 1 (logo + links) is a flex group that grows; row 2 is the CTA */
+.unlimited-nav > div:not(.unlimited-nav-cta) {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+  align-items: center;
+  gap: 33px;
+}
+
+.unlimited-nav > .unlimited-nav-cta {
+  flex: 0 0 auto;
+}
+
+.unlimited-nav .unlimited-nav-brand img {
+  display: block;
+  height: 33px;
+  width: auto;
+}
+
+.unlimited-nav .unlimited-nav-links,
+.unlimited-nav .unlimited-nav-links ul {
+  display: flex;
+  align-items: center;
+  gap: 33px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.unlimited-nav .unlimited-nav-links a {
+  color: var(--un-nav-text);
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.unlimited-nav .unlimited-nav-cta a {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 16px;
+  background: var(--un-nav-accent);
+  border: 1px solid var(--un-nav-border);
+  color: var(--un-nav-text);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  text-decoration: none;
+  box-shadow: 0 2px 2px rgb(0 0 0 / 25%), 0 4px 4px rgb(0 0 0 / 25%);
+}
+
+.unlimited-nav .unlimited-nav-links a:hover {
+  color: var(--un-nav-accent);
+}
+
+.unlimited-nav .unlimited-nav-cta a:hover {
+  background: #fff;
+  color: #131313;
+}
+
+@media (width <= 900px) {
+  .unlimited-nav {
+    gap: 16px;
+  }
+
+  .unlimited-nav .unlimited-nav-links {
+    order: 3;
+    flex-basis: 100%;
+    justify-content: center;
+    gap: 20px;
+  }
+}

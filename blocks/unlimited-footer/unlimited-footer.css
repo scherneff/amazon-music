@@ -1,0 +1,84 @@
+/* unlimited-footer — black footer with brand logo, social columns, copyright */
+.unlimited-footer-wrapper {
+  background: #000;
+}
+
+.unlimited-footer {
+  --un-foot-bg: #000;
+  --un-foot-text: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  max-width: 1600px;
+  min-height: 234px;
+  margin: 0 auto;
+  padding: 41px 43px;
+  background: var(--un-foot-bg);
+}
+
+.unlimited-footer .unlimited-footer-brand {
+  flex: 0 1 608px;
+}
+
+.unlimited-footer .unlimited-footer-brand img {
+  display: block;
+  width: 100%;
+  max-width: 608px;
+  height: auto;
+}
+
+.unlimited-footer .unlimited-footer-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: stretch;
+  gap: 40px;
+}
+
+.unlimited-footer .unlimited-footer-social,
+.unlimited-footer .unlimited-footer-social > div {
+  display: flex;
+  gap: 50px;
+}
+
+.unlimited-footer .unlimited-footer-social ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.unlimited-footer .unlimited-footer-social li {
+  font-size: 30px;
+  line-height: 41px;
+  letter-spacing: 0.6px;
+}
+
+.unlimited-footer .unlimited-footer-social a {
+  color: var(--un-foot-text);
+  text-decoration: none;
+}
+
+.unlimited-footer .unlimited-footer-social a:hover {
+  text-decoration: underline;
+}
+
+.unlimited-footer .unlimited-footer-copy p {
+  margin: 0;
+  color: var(--un-foot-text);
+  font-size: 16px;
+  line-height: 50px;
+}
+
+@media (width <= 600px) {
+  .unlimited-footer .unlimited-footer-social {
+    gap: 32px;
+  }
+
+  .unlimited-footer .unlimited-footer-social li {
+    font-size: 24px;
+    line-height: 34px;
+  }
+}

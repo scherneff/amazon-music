@@ -1,0 +1,76 @@
+/* unlimited-newsletter — teal email signup bar */
+.unlimited-newsletter-wrapper {
+  background: #25d1da;
+}
+
+.unlimited-newsletter {
+  --un-news-bg: #25d1da;
+  --un-news-text: #fff;
+  --un-news-btn-bg: #000;
+  --un-news-btn-text: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 34px 39px;
+  background: var(--un-news-bg);
+}
+
+.unlimited-newsletter .unlimited-newsletter-copy p {
+  margin: 0;
+  color: var(--un-news-text);
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: 0.12px;
+}
+
+.unlimited-newsletter form {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  min-width: 280px;
+  max-width: 519px;
+}
+
+.unlimited-newsletter input[type='email'] {
+  flex: 1;
+  padding: 10px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--un-news-text);
+  color: var(--un-news-text);
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.unlimited-newsletter input[type='email']::placeholder {
+  color: var(--un-news-text);
+  opacity: 0.9;
+}
+
+.unlimited-newsletter input[type='email']:focus {
+  outline: none;
+  border-bottom-color: #000;
+}
+
+.unlimited-newsletter button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 15px;
+  background: var(--un-news-btn-bg);
+  color: var(--un-news-btn-text);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+}
+
+.unlimited-newsletter button:hover {
+  background: #222;
+}
