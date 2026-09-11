@@ -1,0 +1,100 @@
+{
+  "pageName": "unlimited",
+  "fileKey": "QAvA1T8khKEl6VixtlXEtp",
+  "pageNodeId": "228:210",
+  "theme": "dark background (#000), teal accent (#25D1DA-ish), bold condensed sans headings",
+  "totalBlocks": 7,
+  "blocks": [
+    {
+      "order": 1,
+      "nodeId": "228:169",
+      "figmaName": "Top-nav",
+      "suggestedBlockType": "nav",
+      "suggestedVariantName": "unlimited-nav",
+      "width": 1440,
+      "height": 70,
+      "y": -4808,
+      "status": "pending",
+      "hasImages": true,
+      "imageValidation": "pending"
+    },
+    {
+      "order": 2,
+      "nodeId": "228:190",
+      "figmaName": "section_Header-img",
+      "suggestedBlockType": "hero",
+      "suggestedVariantName": "unlimited-hero",
+      "width": 1392,
+      "height": 800,
+      "y": -4714,
+      "status": "pending",
+      "hasImages": true,
+      "imageValidation": "pending"
+    },
+    {
+      "order": 3,
+      "nodeId": "228:329",
+      "figmaName": "section_RTBs",
+      "suggestedBlockType": "cards",
+      "suggestedVariantName": "unlimited-rtbs",
+      "width": 1392,
+      "height": 480,
+      "y": -3890,
+      "status": "pending",
+      "hasImages": true,
+      "imageValidation": "pending"
+    },
+    {
+      "order": 4,
+      "nodeId": "228:330",
+      "figmaName": "section_NowPlaying",
+      "suggestedBlockType": "showcase",
+      "suggestedVariantName": "unlimited-showcase",
+      "width": 1439,
+      "height": 822,
+      "y": -3385.73,
+      "status": "pending",
+      "hasImages": true,
+      "imageValidation": "pending"
+    },
+    {
+      "order": 5,
+      "nodeId": "228:476",
+      "figmaName": "section - otr and email (On the radar cards)",
+      "suggestedBlockType": "cards",
+      "suggestedVariantName": "unlimited-radar",
+      "width": 1392,
+      "height": 760,
+      "y": -2539.73,
+      "status": "pending",
+      "hasImages": true,
+      "imageValidation": "pending"
+    },
+    {
+      "order": 6,
+      "nodeId": "228:476",
+      "figmaName": "section - otr and email (newsletter signup)",
+      "suggestedBlockType": "form",
+      "suggestedVariantName": "unlimited-newsletter",
+      "width": 1392,
+      "height": 90,
+      "y": -1610,
+      "status": "pending",
+      "hasImages": false,
+      "imageValidation": "n/a"
+    },
+    {
+      "order": 7,
+      "nodeId": "228:495",
+      "figmaName": "section_footer",
+      "suggestedBlockType": "footer",
+      "suggestedVariantName": "unlimited-footer",
+      "width": 1440,
+      "height": 316,
+      "y": -1506.73,
+      "status": "pending",
+      "hasImages": true,
+      "imageValidation": "pending"
+    }
+  ]
+}

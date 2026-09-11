@@ -1,0 +1,43 @@
+/* unlimited-showcase — dark section with two headlines around fanned cover art */
+.unlimited-showcase-wrapper {
+  background: #000;
+}
+
+.unlimited-showcase {
+  --un-show-text: #fff;
+  --un-show-heading-size: clamp(44px, 7vw, 96px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 64px 49px;
+  text-align: center;
+}
+
+.unlimited-showcase h2 {
+  margin: 0;
+  color: var(--un-show-text);
+  font-family: 'Sharp Grotesk', montserrat, sans-serif;
+  font-weight: 700;
+  font-size: var(--un-show-heading-size);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.unlimited-showcase .unlimited-showcase-art img {
+  display: block;
+  width: 100%;
+  max-width: 1155px;
+  height: auto;
+  margin: 0 auto;
+}
+
+@media (width <= 600px) {
+  .unlimited-showcase {
+    padding: 15px 24px;
+    gap: 32px;
+  }
+}

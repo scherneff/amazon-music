@@ -1,0 +1,11 @@
+/* unlimited-lp template — standalone landing page with no global site chrome */
+body.unlimited-lp > header,
+body.unlimited-lp > footer {
+  display: none;
+}
+
+/* Reclaim the space the fixed/rendered header would have reserved */
+body.unlimited-lp > main {
+  margin-top: 0;
+  padding-top: 0;
+}

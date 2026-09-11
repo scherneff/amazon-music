@@ -1,0 +1,22 @@
+{
+  "pageName": "unlimited",
+  "imageDirectory": "content/images/unlimited",
+  "summary": {
+    "totalDiscovered": 11,
+    "totalDownloaded": 11,
+    "totalFailed": 0
+  },
+  "assets": [
+    { "blockOrder": 1, "blockVariant": "unlimited-nav", "filename": "nav-logo.png", "localPath": "./images/unlimited/nav-logo.png", "usage": "content-image", "status": "downloaded", "fileSize": 5037 },
+    { "blockOrder": 2, "blockVariant": "unlimited-hero", "filename": "hero-logo.png", "localPath": "./images/unlimited/hero-logo.png", "usage": "content-image", "status": "downloaded", "fileSize": 6103 },
+    { "blockOrder": 3, "blockVariant": "unlimited-rtbs", "filename": "rtb-icon-hd.png", "localPath": "./images/unlimited/rtb-icon-hd.png", "usage": "content-image", "status": "downloaded", "fileSize": 1237 },
+    { "blockOrder": 3, "blockVariant": "unlimited-rtbs", "filename": "rtb-icon-artists.png", "localPath": "./images/unlimited/rtb-icon-artists.png", "usage": "content-image", "status": "downloaded", "fileSize": 2271 },
+    { "blockOrder": 3, "blockVariant": "unlimited-rtbs", "filename": "rtb-icon-podcasts.png", "localPath": "./images/unlimited/rtb-icon-podcasts.png", "usage": "content-image", "status": "downloaded", "fileSize": 1343 },
+    { "blockOrder": 4, "blockVariant": "unlimited-showcase", "filename": "showcase-covers.png", "localPath": "./images/unlimited/showcase-covers.png", "usage": "content-image", "status": "downloaded", "fileSize": 1615351 },
+    { "blockOrder": 5, "blockVariant": "unlimited-radar", "filename": "radar-flog-gnaw.png", "localPath": "./images/unlimited/radar-flog-gnaw.png", "usage": "content-image", "status": "downloaded", "fileSize": 571428 },
+    { "blockOrder": 5, "blockVariant": "unlimited-radar", "filename": "radar-stagecoach.png", "localPath": "./images/unlimited/radar-stagecoach.png", "usage": "content-image", "status": "downloaded", "fileSize": 581351 },
+    { "blockOrder": 5, "blockVariant": "unlimited-radar", "filename": "radar-2chainz.png", "localPath": "./images/unlimited/radar-2chainz.png", "usage": "content-image", "status": "downloaded", "fileSize": 598418 },
+    { "blockOrder": 5, "blockVariant": "unlimited-radar", "filename": "radar-stagecoach-2024.png", "localPath": "./images/unlimited/radar-stagecoach-2024.png", "usage": "content-image", "status": "downloaded", "fileSize": 608186 },
+    { "blockOrder": 5, "blockVariant": "unlimited-radar", "filename": "radar-see-more.png", "localPath": "./images/unlimited/radar-see-more.png", "usage": "content-image", "status": "downloaded", "fileSize": 11486 }
+  ]
+}

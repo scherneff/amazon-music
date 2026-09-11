@@ -1,0 +1,9 @@
+{
+  "sites": {
+    "amazon-music": {
+      "previewOrg": "scherneff",
+      "previewSite": "amazon-music",
+      "contentHostUrl": "https://content.da.live/scherneff/amazon-music/"
+    }
+  }
+}
