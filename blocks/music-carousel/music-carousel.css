@@ -11,7 +11,7 @@
   --tilt: 10deg; /* tips the ring so the front rides high, the back dips low */
 
   position: relative;
-  padding-block: var(--space-2xl);
+  padding-block: var(--space-m);
   overflow: hidden;
   background: #000;
   isolation: isolate;
@@ -45,7 +45,7 @@
 
 .music-carousel-stage {
   position: relative;
-  height: calc(var(--card-h) * 2.25);
+  height: calc(var(--card-h) * 1.62);
   perspective: var(--perspective);
   perspective-origin: center 42%;
   touch-action: pan-y;
@@ -58,7 +58,7 @@
 
 .music-carousel-ring {
   position: absolute;
-  top: 5%;
+  top: 8%;
   left: 0;
   right: 0;
   width: var(--card-w);
