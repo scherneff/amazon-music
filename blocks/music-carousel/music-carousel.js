@@ -25,8 +25,8 @@ const CAN_HOVER = window.matchMedia('(hover: hover)');
 
 // degrees / second for each speed variant
 const SPEEDS = { slow: 5, default: 9, fast: 18 };
-// gap between neighbouring cards (1 = touching)
-const SPACING = 1.35;
+// gap between neighbouring cards (1 = touching, lower = more overlap)
+const SPACING = 1.08;
 // spin (degrees) applied per pixel of horizontal drag
 const DRAG_FACTOR = 0.25;
 // movement (px) past which a pointer gesture counts as a drag, not a click

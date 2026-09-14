@@ -8,7 +8,7 @@
   --card-h: 200px; /* 3 : 4 artwork */
   --perspective: 1000px;
   --edge-fade: 14%;
-  --tilt: 16deg; /* tips the ring so the front rides high, the back dips low */
+  --tilt: 10deg; /* tips the ring so the front rides high, the back dips low */
 
   position: relative;
   padding-block: var(--space-2xl);
