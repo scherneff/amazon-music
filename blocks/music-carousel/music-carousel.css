@@ -74,7 +74,8 @@
   width: var(--card-w);
   height: var(--card-h);
   transform: rotateY(calc(var(--i) * var(--angle))) translateZ(var(--radius, 320px));
-  backface-visibility: hidden;
+
+  /* backface left visible so the far side of the ring shows through */
   color: #fff;
   text-decoration: none;
 }
@@ -88,7 +89,7 @@
   box-shadow: 0 18px 40px rgb(0 0 0 / 55%);
 
   /* reflective floor — also mirrors the caption, matching the comp */
-  -webkit-box-reflect: below 8px linear-gradient(transparent 58%, rgb(0 0 0 / 28%));
+  -webkit-box-reflect: below 2px linear-gradient(transparent 8%, rgb(0 0 0 / 75%));
 }
 
 .music-carousel-card-art img {
