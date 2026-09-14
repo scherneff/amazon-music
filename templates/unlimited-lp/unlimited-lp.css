@@ -46,13 +46,14 @@ body.unlimited-lp main .default-content-wrapper h2 {
   font-size: clamp(44px, 7vw, 96px);
 }
 
-/* Optional centered text: add Section Metadata "Style: Center" to a section.
-   Also center the h2 accent bar — the global rule only does so for sections
-   that are direct children of main, and these can be nested in a fragment. */
+/* Optional centered text: add Section Metadata "Style: Center" to a section. */
 body.unlimited-lp main .section.center .default-content-wrapper {
   text-align: center;
 }
 
-body.unlimited-lp main .section.center h2::after {
-  margin-inline: auto;
+/* Drop the global h2 accent bar (thin gradient line under headings) on this
+   page. !important overrides the high-specificity global rule regardless of
+   how deeply a heading is nested (e.g. inside a fragment). */
+body.unlimited-lp main h2::after {
+  content: none !important;
 }
