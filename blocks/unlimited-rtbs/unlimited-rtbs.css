@@ -22,7 +22,10 @@
 
 .unlimited-rtbs .unlimited-rtbs-track {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+
+  /* minmax(0, 1fr) — not 1fr — so a long word can't widen its column and
+     make the cards unequal; all three stay exactly one third. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--un-rtb-gap);
   width: 100%;
 }
