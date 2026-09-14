@@ -7,11 +7,10 @@
   --un-radar-bg: #fff;
   --un-radar-title: #000;
   --un-radar-accent: #25d1da;
-  --un-radar-caption: #fff;
-  --un-radar-radius: 20px;
 
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: start;
   gap: 24px;
   max-width: 1600px;
   margin: 0 auto;
@@ -19,13 +18,13 @@
   background: var(--un-radar-bg);
 }
 
-/* Intro title cell spans the first column, top row */
+/* Intro title cell — top-left, sized to its own content (not full height) */
 .unlimited-radar .unlimited-radar-intro h2 {
   margin: 0;
   color: var(--un-radar-title);
   font-family: 'Sharp Grotesk', montserrat, sans-serif;
   font-weight: 700;
-  font-size: clamp(72px, 11vw, 155px);
+  font-size: clamp(64px, 8vw, 120px);
   line-height: 0.9;
   letter-spacing: -0.02em;
 }
@@ -33,39 +32,17 @@
 .unlimited-radar .unlimited-radar-intro p {
   margin: 24px 0 0;
   color: var(--un-radar-accent);
-  font-size: clamp(24px, 3vw, 41px);
+  font-size: clamp(24px, 2.6vw, 36px);
   line-height: 1.15;
 }
 
-/* News photo cards: image fills, caption overlaid bottom-left */
-.unlimited-radar .unlimited-radar-card {
-  position: relative;
-  min-height: 407px;
-  border-radius: var(--un-radar-radius);
-  overflow: hidden;
-  box-shadow: 4px 4px 10px rgb(0 0 0 / 5%);
-}
-
-.unlimited-radar .unlimited-radar-card picture,
-.unlimited-radar .unlimited-radar-card img {
-  position: absolute;
-  inset: 0;
+/* News photo cards: the flattened artwork already includes rounded corners,
+   the bottom gradient, and the caption text — so just display it as-is. */
+.unlimited-radar .unlimited-radar-card img,
+.unlimited-radar .unlimited-radar-card picture {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.unlimited-radar .unlimited-radar-card .unlimited-radar-caption {
-  position: absolute;
-  inset: auto 0 0;
-  z-index: 1;
-  margin: 0;
-  padding: 24px;
-  color: var(--un-radar-caption);
-  font-weight: 700;
-  font-size: 22px;
-  line-height: 1.15;
-  background: linear-gradient(180deg, rgb(0 0 0 / 0%) 0%, rgb(0 0 0 / 85%) 100%);
+  height: auto;
 }
 
 /* See more tile */
@@ -109,5 +86,34 @@
 @media (width <= 600px) {
   .unlimited-radar {
     grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 24px 24px 32px;
+  }
+
+  .unlimited-radar .unlimited-radar-intro h2 {
+    font-size: clamp(56px, 18vw, 88px);
+  }
+
+  .unlimited-radar .unlimited-radar-intro p {
+    margin-top: 12px;
+    font-size: 22px;
+  }
+
+  .unlimited-radar .unlimited-radar-more {
+    min-height: 160px;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 16px;
+  }
+
+  .unlimited-radar .unlimited-radar-more img {
+    width: 96px;
+    height: 96px;
+  }
+
+  .unlimited-radar .unlimited-radar-more a,
+  .unlimited-radar .unlimited-radar-more p {
+    font-size: 32px;
+    text-align: left;
   }
 }
