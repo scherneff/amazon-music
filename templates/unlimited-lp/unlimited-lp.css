@@ -19,6 +19,11 @@ body.unlimited-lp main > .section {
   margin-block: 0;
 }
 
+/* Space between stacked sections (they sit flush by default). */
+body.unlimited-lp main > .section + .section {
+  margin-block-start: var(--space-3xl);
+}
+
 /* Kill any white showing through between the stacked dark sections */
 body.unlimited-lp,
 body.unlimited-lp > main {
