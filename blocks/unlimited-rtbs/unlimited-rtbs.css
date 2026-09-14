@@ -57,6 +57,13 @@
   letter-spacing: -0.01em;
 }
 
+/* Render part of a headline black by bolding those words in DA
+   (works for a word, a phrase, or the whole headline). */
+.unlimited-rtbs .unlimited-rtbs-card :is(strong, b) {
+  color: var(--un-rtb-text-dark, #000);
+  font-weight: inherit;
+}
+
 .unlimited-rtbs .unlimited-rtbs-dots {
   display: flex;
   gap: 12px;
