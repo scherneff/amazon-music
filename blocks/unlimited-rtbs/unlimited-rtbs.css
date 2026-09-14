@@ -9,7 +9,7 @@
   --un-rtb-text: #fff;
   --un-rtb-radius: 30px;
   --un-rtb-gap: 37px;
-  --un-rtb-heading-size: clamp(34px, 4vw, 72px);
+  --un-rtb-heading-size: clamp(28px, 3vw, 44px);
 
   display: flex;
   flex-direction: column;
@@ -35,7 +35,7 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 10px;
-  min-height: 443px;
+  aspect-ratio: 1 / 1; /* square cards */
   padding: 24px 24px 40px;
   border-radius: var(--un-rtb-radius);
   background: var(--un-rtb-bg);
@@ -55,6 +55,7 @@
   font-size: var(--un-rtb-heading-size);
   line-height: 0.97;
   letter-spacing: -0.01em;
+  overflow-wrap: break-word;
 }
 
 /* Render part of a headline black by bolding those words in DA
@@ -97,7 +98,6 @@
   }
 
   .unlimited-rtbs .unlimited-rtbs-card {
-    min-height: 340px;
     scroll-snap-align: center;
   }
 }
