@@ -36,13 +36,37 @@
   line-height: 1.15;
 }
 
-/* News photo cards: the flattened artwork already includes rounded corners,
-   the bottom gradient, and the caption text — so just display it as-is. */
+/* News photo cards */
+.unlimited-radar .unlimited-radar-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
 .unlimited-radar .unlimited-radar-card img,
 .unlimited-radar .unlimited-radar-card picture {
   display: block;
   width: 100%;
   height: auto;
+}
+
+/* Editable caption overlay — bottom-left title over a gradient scrim
+   (replaces the caption that used to be baked into the artwork). */
+.unlimited-radar .unlimited-radar-card-caption {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  padding: 48px 20px 20px;
+  color: #fff;
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: clamp(20px, 1.7vw, 26px);
+  line-height: 1.2;
+  background: linear-gradient(transparent, rgb(0 0 0 / 55%));
+}
+
+.unlimited-radar .unlimited-radar-card-caption p {
+  margin: 0;
 }
 
 /* See more tile */
