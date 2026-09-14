@@ -102,13 +102,26 @@
   position: absolute;
   inset-inline: 0;
   bottom: 0;
-  padding: var(--space-l) var(--space-s) var(--space-s);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-xl) var(--space-s) var(--space-s);
+  text-align: center;
+  text-shadow: 0 1px 3px rgb(0 0 0 / 70%);
+  background: linear-gradient(transparent, rgb(0 0 0 / 85%));
+}
+
+.music-carousel-title {
   font-weight: 700;
   font-size: 0.95rem;
   line-height: 1.15;
-  text-align: center;
-  text-shadow: 0 1px 3px rgb(0 0 0 / 60%);
-  background: linear-gradient(transparent, rgb(0 0 0 / 80%));
+}
+
+.music-carousel-subtitle {
+  font-weight: 400;
+  font-size: 0.8rem;
+  line-height: 1.1;
+  opacity: 0.85;
 }
 
 .music-carousel-card:focus-visible .music-carousel-card-art {

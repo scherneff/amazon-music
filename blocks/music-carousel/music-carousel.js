@@ -34,15 +34,20 @@ const DRAG_THRESHOLD = 6;
 
 const isUrl = (text) => /^https?:\/\//i.test(text);
 
-/** Pull a human caption out of an authored row, if there is one. */
-function readCaption(row, link) {
-  const el = [...row.querySelectorAll('p, h1, h2, h3, h4, h5, h6, span')]
-    .find((node) => !node.querySelector('picture, img, a')
-      && node.textContent.trim()
-      && !isUrl(node.textContent.trim()));
-  if (el) return el.textContent.trim();
+/**
+ * Collect the caption text lines authored in a row. The first line is the
+ * title; any further lines become the subtitle (e.g. an artist). Falls back
+ * to the link text when no separate caption is given.
+ */
+function readCaptionLines(row, link) {
+  const seen = new Set();
+  const lines = [...row.querySelectorAll('p, h1, h2, h3, h4, h5, h6')]
+    .filter((node) => !node.querySelector('picture, img, a'))
+    .map((node) => node.textContent.trim())
+    .filter((text) => text && !isUrl(text) && !seen.has(text) && seen.add(text));
+  if (lines.length) return lines;
   const linkText = link ? link.textContent.trim() : '';
-  return linkText && !isUrl(linkText) ? linkText : '';
+  return linkText && !isUrl(linkText) ? [linkText] : [];
 }
 
 /** Turn one authored row into a card element (or null if the row is empty). */
@@ -51,17 +56,24 @@ function buildCard(row) {
   const link = row.querySelector('a[href]');
   if (!media && !link) return null;
 
-  const caption = readCaption(row, link);
+  const lines = readCaptionLines(row, link);
   const card = createTag(link ? 'a' : 'div', { class: 'music-carousel-card' });
   if (link) {
     card.href = link.getAttribute('href');
     if (link.title) card.title = link.title;
   }
-  if (caption) card.setAttribute('aria-label', caption);
+  if (lines.length) card.setAttribute('aria-label', lines.join(', '));
 
   const art = createTag('div', { class: 'music-carousel-card-art' });
   if (media) art.append(media);
-  if (caption) art.append(createTag('span', { class: 'music-carousel-caption' }, caption));
+  if (lines.length) {
+    const caption = createTag('div', { class: 'music-carousel-caption' });
+    caption.append(createTag('span', { class: 'music-carousel-title' }, lines[0]));
+    if (lines.length > 1) {
+      caption.append(createTag('span', { class: 'music-carousel-subtitle' }, lines.slice(1).join(' · ')));
+    }
+    art.append(caption);
+  }
   card.append(art);
   return card;
 }
