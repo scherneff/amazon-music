@@ -9,3 +9,18 @@ body.unlimited-lp > main {
   margin-top: 0;
   padding-top: 0;
 }
+
+/* Tighten the vertical rhythm between sections to match the Figma design.
+   The global default is padding-block: var(--space-xl) (~32px each side);
+   the design stacks sections flush with no gap between them. Scoped to
+   this page only. */
+body.unlimited-lp main > .section {
+  padding-block: 0;
+  margin-block: 0;
+}
+
+/* Kill any white showing through between the stacked dark sections */
+body.unlimited-lp,
+body.unlimited-lp > main {
+  background: #000;
+}

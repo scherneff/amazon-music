@@ -82,13 +82,43 @@
 
 @media (width <= 900px) {
   .unlimited-nav {
-    gap: 16px;
+    gap: 16px 12px;
+    padding: 12px 20px;
+  }
+
+  /* Brand row wraps its links to a full-width centered line below the logo */
+  .unlimited-nav > div:not(.unlimited-nav-cta) {
+    flex-wrap: wrap;
+    gap: 12px 20px;
+  }
+
+  .unlimited-nav .unlimited-nav-links,
+  .unlimited-nav .unlimited-nav-links ul {
+    flex-wrap: wrap;
+    gap: 12px 20px;
+  }
+
+  .unlimited-nav .unlimited-nav-cta a {
+    padding: 10px 18px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+@media (width <= 600px) {
+  .unlimited-nav {
+    justify-content: space-between;
+  }
+
+  /* Logo and CTA share the top line; links drop to their own centered row */
+  .unlimited-nav > div:not(.unlimited-nav-cta) {
+    flex: 1 1 auto;
+    align-items: center;
   }
 
   .unlimited-nav .unlimited-nav-links {
     order: 3;
     flex-basis: 100%;
-    justify-content: center;
-    gap: 20px;
+    justify-content: flex-start;
   }
 }

@@ -75,7 +75,11 @@
   .unlimited-rtbs .unlimited-rtbs-track {
     grid-auto-flow: column;
     grid-template-columns: none;
-    grid-auto-columns: 80%;
+    grid-auto-columns: 78%;
+    gap: 16px;
+    width: 100%;
+    max-width: 100%;
+    padding-bottom: 8px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-padding: 0 24px;
@@ -83,6 +87,13 @@
   }
 
   .unlimited-rtbs .unlimited-rtbs-card {
+    min-height: 340px;
     scroll-snap-align: center;
+  }
+}
+
+@media (width <= 600px) {
+  .unlimited-rtbs .unlimited-rtbs-track {
+    grid-auto-columns: 85%;
   }
 }
