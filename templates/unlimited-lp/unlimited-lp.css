@@ -56,6 +56,12 @@ body.unlimited-lp main .section.center .default-content-wrapper {
   text-align: center;
 }
 
+/* Pull a heading that follows the carousel fragment up close to it
+   (the default h2 top margin scales with the large font, ~77px). */
+body.unlimited-lp main .fragment-wrapper + .default-content-wrapper h2 {
+  margin-top: var(--space-m);
+}
+
 /* Drop the global h2 accent bar (thin gradient line under headings) on this
    page. !important overrides the high-specificity global rule regardless of
    how deeply a heading is nested (e.g. inside a fragment). */
