@@ -1,5 +1,7 @@
 {
   "project": "DIYFire",
+  "editUrlLabel": "Edit",
+  "editUrlPattern": "https://da.live/canvas#/scherneff/amazon-music{{pathname}}",
   "plugins": [
     {
       "id": "experimentation",
