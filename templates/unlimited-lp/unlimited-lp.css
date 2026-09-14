@@ -24,6 +24,16 @@ body.unlimited-lp main > .section + .section {
   margin-block-start: var(--space-3xl);
 }
 
+/* Re-enable the global spacer-* section styles here. The flush-section reset
+   above suppresses their margins, so apply them as padding that adds to the
+   section gap (Section Metadata "Style: spacer-top-l", etc.). */
+body.unlimited-lp main > .section.spacer-top-s { padding-block-start: var(--space-s); }
+body.unlimited-lp main > .section.spacer-top-m { padding-block-start: var(--space-m); }
+body.unlimited-lp main > .section.spacer-top-l { padding-block-start: var(--space-l); }
+body.unlimited-lp main > .section.spacer-bottom-s { padding-block-end: var(--space-s); }
+body.unlimited-lp main > .section.spacer-bottom-m { padding-block-end: var(--space-m); }
+body.unlimited-lp main > .section.spacer-bottom-l { padding-block-end: var(--space-l); }
+
 /* Kill any white showing through between the stacked dark sections */
 body.unlimited-lp,
 body.unlimited-lp > main {
