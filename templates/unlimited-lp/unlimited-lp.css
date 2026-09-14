@@ -34,3 +34,14 @@ body.unlimited-lp main :is(h1, h2, h3, h4, h5, h6) {
   font-weight: 700;
   color: #fff;
 }
+
+/* Default (non-block) headings match the block heading scale: h1 like the
+   unlimited-hero headline, h2 like the unlimited-showcase heading. Scoped to
+   .default-content-wrapper so the blocks keep their own heading sizes. */
+body.unlimited-lp main .default-content-wrapper h1 {
+  font-size: clamp(56px, 10vw, 145px);
+}
+
+body.unlimited-lp main .default-content-wrapper h2 {
+  font-size: clamp(44px, 7vw, 96px);
+}
