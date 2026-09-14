@@ -8,8 +8,8 @@
   --un-rtb-bg: #25d1da;
   --un-rtb-text: #fff;
   --un-rtb-radius: 30px;
-  --un-rtb-gap: 37px;
-  --un-rtb-heading-size: clamp(28px, 3vw, 44px);
+  --un-rtb-gap: 48px;
+  --un-rtb-heading-size: clamp(30px, 3.4vw, 52px);
 
   display: flex;
   flex-direction: column;
