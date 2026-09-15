@@ -50,6 +50,23 @@
   height: auto;
 }
 
+/* Whole-card link (when a destination is authored) */
+.unlimited-radar .unlimited-radar-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.unlimited-radar .unlimited-radar-card-link:hover {
+  opacity: 0.92;
+}
+
+.unlimited-radar .unlimited-radar-card-link:focus-visible {
+  outline: 3px solid var(--un-radar-accent);
+  outline-offset: 3px;
+}
+
 /* Editable caption overlay — bottom-left title over a gradient scrim
    (replaces the caption that used to be baked into the artwork). */
 .unlimited-radar .unlimited-radar-card-caption {

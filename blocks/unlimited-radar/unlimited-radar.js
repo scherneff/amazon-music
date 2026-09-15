@@ -15,7 +15,9 @@ export default function decorate(block) {
     const cell = row;
     const hasImage = !!cell.querySelector('picture, img');
     const hasHeading = !!cell.querySelector('h1, h2, h3');
-    const link = cell.querySelector('a');
+    const link = cell.querySelector('a[href]');
+    const captionEls = [...cell.querySelectorAll('p')]
+      .filter((el) => !el.querySelector('picture, img, a') && el.textContent.trim());
 
     if (hasHeading && !hasImage) {
       cell.className = 'unlimited-radar-intro';
@@ -25,21 +27,32 @@ export default function decorate(block) {
         h2.innerHTML = h.innerHTML;
         h.replaceWith(h2);
       }
-    } else if (hasImage && link) {
-      // See-more tile: icon + link
+    } else if (hasImage && link && !captionEls.length) {
+      // See-more tile: icon + link, no caption
       cell.className = 'unlimited-radar-more';
     } else if (hasImage) {
       // News photo card. Any authored caption text becomes an editable
-      // overlay; with no text it renders as the plain photo (baked caption).
+      // overlay; an authored link makes the whole card clickable. With no
+      // caption it renders as the plain photo (baked caption).
       cell.className = 'unlimited-radar-card';
       const media = cell.querySelector('picture') || cell.querySelector('img');
-      const texts = [...cell.querySelectorAll('p')]
-        .filter((el) => !el.querySelector('picture, img, a') && el.textContent.trim());
-      if (media && texts.length) {
+      const href = link ? link.getAttribute('href') : null;
+      const linkTitle = link ? link.getAttribute('title') : null;
+      // the authored link only carries the destination — drop its paragraph
+      if (link) (link.closest('p') || link).remove();
+      if (media && captionEls.length) {
         const caption = document.createElement('div');
         caption.className = 'unlimited-radar-card-caption';
-        texts.forEach((t) => caption.append(t));
+        captionEls.forEach((t) => caption.append(t));
         cell.append(caption);
+      }
+      if (href) {
+        const cardLink = document.createElement('a');
+        cardLink.className = 'unlimited-radar-card-link';
+        cardLink.href = href;
+        if (linkTitle) cardLink.title = linkTitle;
+        while (cell.firstChild) cardLink.append(cell.firstChild);
+        cell.append(cardLink);
       }
     }
   });
