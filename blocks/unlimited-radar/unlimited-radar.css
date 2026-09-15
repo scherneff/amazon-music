@@ -7,6 +7,7 @@
   --un-radar-bg: #fff;
   --un-radar-title: #000;
   --un-radar-accent: #25d1da;
+  --un-radar-card-ratio: 1 / 1; /* uniform card size; images crop to fill */
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -43,18 +44,25 @@
   overflow: hidden;
 }
 
-/* image + caption container: sized exactly to the image so the caption
-   overlay can't spill past the photo */
+/* image + caption container: fixed aspect ratio so every card is the same
+   size, with the image cropped to fill (object-fit: cover) */
 .unlimited-radar .unlimited-radar-card-media {
   position: relative;
   line-height: 0;
+  aspect-ratio: var(--un-radar-card-ratio);
 }
 
-.unlimited-radar .unlimited-radar-card-media img,
 .unlimited-radar .unlimited-radar-card-media picture {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+}
+
+.unlimited-radar .unlimited-radar-card-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Whole-card link (when a destination is authored) */
