@@ -43,8 +43,15 @@
   overflow: hidden;
 }
 
-.unlimited-radar .unlimited-radar-card img,
-.unlimited-radar .unlimited-radar-card picture {
+/* image + caption container: sized exactly to the image so the caption
+   overlay can't spill past the photo */
+.unlimited-radar .unlimited-radar-card-media {
+  position: relative;
+  line-height: 0;
+}
+
+.unlimited-radar .unlimited-radar-card-media img,
+.unlimited-radar .unlimited-radar-card-media picture {
   display: block;
   width: 100%;
   height: auto;
@@ -73,17 +80,18 @@
   position: absolute;
   inset-inline: 0;
   bottom: 0;
-  padding: 48px 20px 20px;
+  padding: 36px 16px 14px;
   color: #fff;
   font-family: var(--font-family);
   font-weight: 600;
-  font-size: clamp(20px, 1.7vw, 26px);
+  font-size: clamp(14px, 1.15vw, 18px);
   line-height: 1.2;
-  background: linear-gradient(transparent, rgb(0 0 0 / 55%));
+  background: linear-gradient(transparent, rgb(0 0 0 / 60%));
 }
 
 .unlimited-radar .unlimited-radar-card-caption p {
   margin: 0;
+  overflow-wrap: break-word;
 }
 
 /* See more tile */

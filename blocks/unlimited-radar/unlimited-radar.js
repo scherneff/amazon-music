@@ -32,27 +32,35 @@ export default function decorate(block) {
       cell.className = 'unlimited-radar-more';
     } else if (hasImage) {
       // News photo card. Any authored caption text becomes an editable
-      // overlay; an authored link makes the whole card clickable. With no
-      // caption it renders as the plain photo (baked caption).
+      // overlay pinned to the image; an authored link makes the whole card
+      // clickable. With no caption it renders as the plain photo.
       cell.className = 'unlimited-radar-card';
       const media = cell.querySelector('picture') || cell.querySelector('img');
       const href = link ? link.getAttribute('href') : null;
       const linkTitle = link ? link.getAttribute('title') : null;
-      // the authored link only carries the destination — drop its paragraph
-      if (link) (link.closest('p') || link).remove();
+
+      // image + caption in a relative container so the caption stays on the
+      // image regardless of the card's height
+      const figure = document.createElement('div');
+      figure.className = 'unlimited-radar-card-media';
+      if (media) figure.append(media);
       if (media && captionEls.length) {
         const caption = document.createElement('div');
         caption.className = 'unlimited-radar-card-caption';
         captionEls.forEach((t) => caption.append(t));
-        cell.append(caption);
+        figure.append(caption);
       }
+
+      cell.textContent = '';
       if (href) {
         const cardLink = document.createElement('a');
         cardLink.className = 'unlimited-radar-card-link';
         cardLink.href = href;
         if (linkTitle) cardLink.title = linkTitle;
-        while (cell.firstChild) cardLink.append(cell.firstChild);
+        cardLink.append(figure);
         cell.append(cardLink);
+      } else {
+        cell.append(figure);
       }
     }
   });
