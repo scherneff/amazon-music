@@ -50,6 +50,7 @@
   position: relative;
   line-height: 0;
   aspect-ratio: var(--un-radar-card-ratio);
+  container-type: inline-size;
 }
 
 .unlimited-radar .unlimited-radar-card-media picture {
@@ -88,13 +89,13 @@
   position: absolute;
   inset-inline: 0;
   bottom: 0;
-  padding: 36px 16px 14px;
+  padding: 20% 6% 8%;
   color: #fff;
   font-family: var(--font-family);
   font-weight: 600;
-  font-size: clamp(14px, 1.15vw, 18px);
-  line-height: 1.2;
-  background: linear-gradient(transparent, rgb(0 0 0 / 60%));
+  font-size: clamp(16px, 6.5cqi, 32px);
+  line-height: 1.12;
+  background: linear-gradient(transparent, rgb(0 0 0 / 70%));
 }
 
 .unlimited-radar .unlimited-radar-card-caption p {
